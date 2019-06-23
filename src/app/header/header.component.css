@@ -1,0 +1,52 @@
+mat-toolbar {
+  background-color: #6D071A;
+  height: auto;
+}
+
+.nameApp {
+  font-size: 3rem;
+  color: white;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+/* p {
+  margin-top: 1rem;
+} */
+
+a, button {
+  text-decoration: none;
+  color: white;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.menu {
+  margin-left: 1rem;
+}
+
+.login {
+  margin-left: 1rem;
+}
+
+.logout {
+  margin-left: 1rem;
+}
+
+.mat-button {
+  height: auto;
+  background-color: orange;
+}
+
+.butMenu{
+  color:black;
+}
+
+.router-link-active {
+  color: #6D071A;
+}

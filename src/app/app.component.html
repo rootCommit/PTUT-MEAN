@@ -1,0 +1,17 @@
+<!--
+  Dans ce fichier .html, on définit l'apparence brute de notre page, comme dans un fichier .html lambda
+  Chaque composant est défini dans le fichier .ts qui lui correspond (cf. header.component.ts)
+
+  Il n'y a pas besoin de définir le fichier .css utilisé pour cette page html car il l'est déjà dans le fichier app.component.ts
+  (cf. app.component.ts)
+-->
+<header>
+  <app-header></app-header>
+</header>
+<main>
+  <!-- On definit quelle route dirigera sur quelle page -->
+  <router-outlet></router-outlet>
+</main>
+<footer>
+  <app-footer></app-footer>
+</footer>

@@ -1,0 +1,103 @@
+<div class="filters">
+  <form (submit)="onSearch(formSearch)" #formSearch="ngForm" *ngIf="!isLoading">
+  <ul>
+    <li class="prix">
+      <mat-form-field>
+        <mat-select placeholder="Prix">
+          <mat-option value="moins100"> Moins de 100 € </mat-option>
+          <mat-option value="moins500"> Moins de 500 € </mat-option>
+          <mat-option value="moins1000"> Moins de 1000 € </mat-option>
+          <mat-option value="plus1000"> Plus de 1000 € </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </li>
+    <span class="space"></span>
+    <li class="categorie">
+      <mat-form-field>
+        <mat-select ngModel #ngCategory="ngModel" placeholder="Catégorie" name="category">
+          <mat-option value="Vêtements"> Vêtements </mat-option>
+          <mat-option value="Jeux de bar"> Jeux de bar </mat-option>
+          <mat-option value="Cocooning"> Cocooning </mat-option>
+          <mat-option value="Meuble"> Meuble </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </li>
+    <span class="space"></span>
+    <li class="marque">
+      <mat-form-field>
+        <mat-select placeholder="Marque">
+          <mat-option value="Kappa2Alpha"> Kappa2Alpha </mat-option>
+          <mat-option value="O'foot"> O'Foot </mat-option>
+          <mat-option value="Mugle"> Mugle </mat-option>
+          <mat-option value="Tablito"> Tablito </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </li>
+    <span class="space"></span>
+    <li>
+      <button class="search" mat-raised-button> Rechercher </button>
+    </li>
+  </ul>
+</form>
+</div>
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<!-- Ceci permet de créer une symbole de chargement qui s'active
+quand isLoading est true, on définit cela dans product-list.component.ts -->
+<mat-accordion multi="true" *ngIf="products.length > 0 && !isLoading">
+  <!--
+    Cette balise crée une zone qui contiendra des panneaux expensibles.
+    le décorateur multi est un booléen. A true, il permet de dérouler plusieurs panneau
+	et à faux, il empêche de le faire
+  -->
+  <mat-expansion-panel *ngFor='let product of products'>
+  <!-- Crée un panneau extensible. *ngFor est une boucle en Angular.
+  La condition permet de créer autant de panneaux que de produits insérés-->
+    <mat-expansion-panel-header>
+	<!-- Cette balise constitue l'en-tête du panneau,
+	ne peut pas être utilisée sans la balise <mat-expansion-panel> -->
+      <span>
+        Référence du produit : {{ product.reference }} <br/>
+	      <!-- Permet de récupérer et d'afficher la référence du produit en question.
+	      Pensez à mettre une double accolade et un espace de chaque côté. -->
+        Tarif : {{ product.price }} €
+      </span>
+    </mat-expansion-panel-header>
+    <div class="product-image">
+      <img [src]="product.imagePath" [alt]="product.reference">
+    </div>
+     <p>
+	 <!-- Deuxième élément du panneau : le corps. Est visible quand on clique sur l'en-tête,
+	 permettant d'étendre le panneau et faire apparaître de nouvelles informations -->
+      Descriptif : {{ product.description }} <br/>
+      Marque : {{ product.brand }}<br/>
+      Couleur : {{ product.color }}<br/>
+      Poids : {{ product.weight }}<br/>
+      Longueur : {{ product.length }}<br/>
+      Largeur : {{ product.width }}<br/>
+      Hauteur : {{ product.height }}<br/>
+      Catégorie : {{ product.category }}<br/>
+    </p>
+    <mat-action-row *ngIf="userIsAuthenticated && !(userId === product.creator)" >
+        <button
+        class="add_to_cart"
+        mat-raised-button>
+        Ajouter au panier
+          <mat-icon>
+            <img src="../../../assets/icons/addcart.svg">
+          </mat-icon>
+      </button>
+    </mat-action-row>
+    <mat-action-row class="edit_delete" *ngIf='userIsAuthenticated && userId === product.creator'>
+	<!-- Un autre élément du panneau. Il contient ici deux boutons :
+  un pour modifier le produit, l'autre pour le supprimer de la base de donnée -->
+      <a class="edit" mat-raised-button color="accent" [routerLink]="['/edit', product.id]"> Modifier </a>
+      <button class="delete" mat-raised-button (click)="onDelete(product.id) " color="warn" > Supprimer </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator [length]="totalProducts" [pageSize]="productsPerPage"
+  [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"
+  *ngIf="products.length > 0">
+</mat-paginator>
+<p class="mat-body-1" *ngIf="products.length<=0 && !isLoading">Aucun article n'a été trouvé</p>

@@ -1,0 +1,39 @@
+<mat-toolbar>
+  <!-- <img src="../../assets/Logo.png"> -->
+
+
+  <span><a class="nameApp" routerLink ="/"> K2A E-Commerce </a></span>
+  <span class="spacer"> </span>
+  <ul>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button
+        routerLink="/mycart"
+        routerLinkActive="router-link-active">
+          Mon panier
+        <mat-icon>
+          <img src="../../../assets/icons/cart.svg">
+        </mat-icon>
+      </button>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button class="menu" mat-button [matMenuTriggerFor]="menu">Menu</button>
+      <mat-menu #menu="matMenu">
+        <button class="butMenu" mat-menu-item routerLink="/create" >Ajouter un produit</button>
+        <button class="butMenu" mat-menu-item routerLink="/" >Consulter les produits</button>
+        <button class="butMenu" mat-menu-item routerLink="#" >Filtrer les produits</button>
+     </mat-menu>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <button class="menu" mat-button [matMenuTriggerFor]="menu"> Menu </button>
+      <mat-menu #menu="matMenu">
+        <button class="butMenu" mat-menu-item routerLink="/">Consulter les produits</button>
+     </mat-menu>
+    </li>
+    <li class="login" *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/auth/login" routerLinkActive="router-link-active"> Se connecter </a>
+    </li>
+    <li class="logout" *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()"> Déconnexion </button>
+    </li>
+  </ul>
+</mat-toolbar>

@@ -1,0 +1,11 @@
+mat-toolbar {
+  background-color:#6D071A;
+  color: white;
+  height: auto;
+}
+.contact{
+  font-size: 2rem;
+}
+.mail {
+  margin: auto;
+}

@@ -1,0 +1,74 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field class="product-full-width">
+      <input matInput name="firstname" ngModel type="text"
+      placeholder="Prénom" #firstnameInput="ngModel"
+      required>
+      <mat-error *ngIf="firstnameInput.invalid"> Le prénom saisi est invalide, veuillez réessayer </mat-error>
+    </mat-form-field>
+    <mat-form-field class="product-full-width">
+      <input matInput name="lastname" ngModel type="text"
+      placeholder="Nom de famille" #lastnameInput="ngModel"
+      required>
+      <mat-error *ngIf="lastnameInput.invalid"> Le nom saisi est invalide, veuillez réessayer </mat-error>
+    </mat-form-field>
+    <mat-form-field class="product-full-width">
+      <input matInput name="age" ngModel type="number"
+      placeholder="Age" #ageInput="ngModel"
+      required>
+      <mat-error *ngIf="ageInput.invalid"> L'âge saisi est invalide, veuillez réessayer </mat-error>
+    </mat-form-field>
+    <mat-form-field class="product-full-width">
+      <input matInput name="address" ngModel type="text"
+      placeholder="Adresse ( N° et nom de rue)" #addressInput="ngModel"
+      required>
+      <mat-error *ngIf="addressInput.invalid"> L'adresse saisie est invalide, veuillez réessayer </mat-error>
+    </mat-form-field>
+    <mat-form-field class="product-full-width">
+      <input matInput name="city" ngModel type="text"
+      placeholder="Ville" #cityInput="ngModel"
+      required>
+      <mat-error *ngIf="cityInput.invalid"> La ville saisie est invalide, veuillez réessayer </mat-error>
+    </mat-form-field>
+    <mat-form-field class="product-full-width">
+      <input matInput name="postalCode" ngModel type="number"
+      placeholder="Code postal" #postalcodeInput="ngModel"
+      required>
+      <mat-error *ngIf="postalcodeInput.invalid"> Le code postal saisi est invalide, veuillez réessayer </mat-error>
+    </mat-form-field>
+    <mat-form-field class="product-full-width">
+        <input matInput name="country" ngModel type="text"
+        placeholder="Pays" #countryInput="ngModel"
+        required>
+        <mat-error *ngIf="countryInput.invalid"> Le pays saisi est invalide, veuillez réessayer </mat-error>
+      </mat-form-field>
+      <mat-form-field class="product-full-width">
+        <input matInput name="phoneNumber" ngModel type="tel"
+        placeholder="Numéro de téléphone" #phoneInput="ngModel"
+        pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}" required>
+        <mat-error *ngIf="phoneInput.invalid"> Le numéro saisi est invalide saisi est invalide, veuillez réessayer </mat-error>
+      </mat-form-field>
+      <mat-form-field class="product-full-width">
+        <input matInput name="email" ngModel type="email"
+        placeholder="Adresse E-mail" #emailInput="ngModel"
+        required email>
+        <mat-error *ngIf="emailInput.invalid"> L'adresse e-mail saisie est invalide, veuillez réessayer </mat-error>
+      </mat-form-field>
+      <mat-form-field class="product-full-width">
+        <input matInput name="password" ngModel type="password"
+        placeholder="Mot de passe" #pwdInput="ngModel"
+        required>
+      </mat-form-field>
+      <!-- <mat-form-field class="product-full-width">
+        <input matInput name="pwdconfirm" ngModel type="password"
+        placeholder="Retapez de nouveau votre mot de passe" #pwdconfirmInput="ngModel"
+        required>
+        <mat-error *ngIf="pwdInput !== pwdconfirmInput">Les mots de passe ne sont pas identiques, veuillez réessayer</mat-error>
+      </mat-form-field> -->
+
+  <button
+    mat-raised-button color="primary"
+    type="submit" *ngIf='!isLoading'> S'inscrire </button>
+  </form>
+</mat-card>

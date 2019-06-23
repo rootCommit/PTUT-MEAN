@@ -1,0 +1,67 @@
+:host{
+  display: block;
+  margin-top: 1rem;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+mat-expansion-panel{
+  background-color: lightgray;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+.add_to_cart {
+  margin-right: 1rem;
+  background-color: orange;
+}
+
+.product-image {
+  width: 50%;
+  height: 50%;
+}
+
+.product-image img {
+  width: 35%;
+  margin: auto;
+}
+
+a mat-raised-button {
+  margin-left: 50px;
+}
+
+.mat-body-1 {
+  text-align: center;
+  font-size: 8rem;
+}
+
+.delete {
+ margin-left: 1rem;
+}
+
+.space {
+  flex: 1 1 auto;
+}
+
+.filters {
+  background-color: lightgray;
+}
+
+.prix {
+  margin-right: 1rem;
+}
+
+.categorie {
+  margin-right: 1rem;
+}
+
+.search {
+  margin-top: 1rem;
+  margin-right: 1rem;
+  background-color: orange;
+}
